@@ -10,6 +10,7 @@ const Posts = ( { posts } ) => {
   );
   return (
     <List
+      bordered={ true }
       itemLayout="vertical"
       size="medium"
       pagination={{
@@ -23,7 +24,7 @@ const Posts = ( { posts } ) => {
         <List.Item
           key={post.data.title}
           actions={[<IconText type="like-o" text={ post.data.ups } />, <IconText type="message" text={ post.data.num_comments } />]}
-          extra={<img width={post.data.thumbnail_width} height={ post.data.thumbnail_height } alt="logo" src={ post.data.thumbnail } />}
+          extra={ post.data.thumbnail !== '' ? <img width={post.data.thumbnail_width} height={ post.data.thumbnail_height } alt="logo" src={ post.data.thumbnail } /> : null}
         >
           <List.Item.Meta
             title={<a href={`https://reddit.com${ post.data.permalink }`}>{post.data.title}</a>}
